@@ -342,16 +342,16 @@ archon:manage_task(
 - [ ] Basic functionality tested
 - [ ] Documentation updated if needed
 
-## Visual Development & Testing
+# Visual Development & Testing
 
-### Design System
+## Design System
 
 The project follows S-Tier SaaS design standards inspired by Stripe, Airbnb, and Linear. All UI development must adhere to:
 
 - **Design Principles**: `/context/design-principles.md` - Comprehensive checklist for world-class UI
 - **Component Library**: NextUI with custom Tailwind configuration
 
-### Quick Visual Check
+## Quick Visual Check
 
 **IMMEDIATELY after implementing any front-end change:**
 
@@ -365,7 +365,7 @@ The project follows S-Tier SaaS design standards inspired by Stripe, Airbnb, and
 
 This verification ensures changes meet design standards and user requirements.
 
-### Comprehensive Design Review
+## Comprehensive Design Review
 
 For significant UI changes or before merging PRs, use the design review agent:
 
@@ -386,9 +386,9 @@ The design review agent will:
 - Test edge cases and error states
 - Provide categorized feedback (Blockers/High/Medium/Nitpicks)
 
-### Playwright MCP Integration
+## Playwright MCP Integration
 
-#### Essential Commands for UI Testing
+### Essential Commands for UI Testing
 
 ```javascript
 // Navigation & Screenshots
@@ -415,7 +415,7 @@ mcp__playwright__browser_wait_for(
 ); // Ensure loading
 ```
 
-### Design Compliance Checklist
+## Design Compliance Checklist
 
 When implementing UI features, verify:
 
@@ -427,9 +427,9 @@ When implementing UI features, verify:
 - [ ] **Error Handling**: Clear error states, helpful messages
 - [ ] **Polish**: Micro-interactions, loading states, empty states
 
-## When to Use Automated Visual Testing
+# When to Use Automated Visual Testing
 
-### Use Quick Visual Check for:
+## Use Quick Visual Check for:
 
 - Every front-end change, no matter how small
 - After implementing new components or features
@@ -437,7 +437,7 @@ When implementing UI features, verify:
 - After fixing visual bugs
 - Before committing UI changes
 
-### Use Comprehensive Design Review for:
+## Use Comprehensive Design Review for:
 
 - Major feature implementations
 - Before creating pull requests with UI changes
@@ -445,7 +445,7 @@ When implementing UI features, verify:
 - After significant design system updates
 - When accessibility compliance is critical
 
-### Skip Visual Testing for:
+## Skip Visual Testing for:
 
 - Backend-only changes (API, database)
 - Configuration file updates
@@ -453,19 +453,19 @@ When implementing UI features, verify:
 - Test file modifications
 - Non-visual utility functions
 
-### Additional Context
+## Additional Context
 
 - Design review agent configuration: `/.claude/agents/design-review-agent.md`
 - Design principles checklist: `/context/design-principles.md`
 - Custom slash commands: `/context/design-review-slash-command.md`
 
-## Git Strategy and Best Practices
+# Git Strategy and Best Practices
 
-### Core Principles
+## Core Principles
 
 **Never work directly on the main branch.** Always create feature branches for any changes, no matter how small. The main branch should remain stable and deployable at all times.
 
-### Branch Naming Convention
+## Branch Naming Convention
 
 Use descriptive, kebab-case branch names that clearly indicate the purpose:
 
@@ -475,14 +475,14 @@ Use descriptive, kebab-case branch names that clearly indicate the purpose:
 - `refactor/database-connection-pool`
 - `docs/api-documentation-update`
 
-### Branching Strategy
+## Branching Strategy
 
-#### Main Branch Protection
+### Main Branch Protection
 - Main branch should be protected and require pull requests
 - All changes must go through code review
 - Ensure CI/CD pipelines pass before merging
 
-#### Feature Development Workflow
+### Feature Development Workflow
 1. **Start from main**: Always create new branches from the latest main
    ```bash
    git checkout main
@@ -502,9 +502,9 @@ Use descriptive, kebab-case branch names that clearly indicate the purpose:
    git rebase main  # or git merge main
    ```
 
-### Commit Best Practices
+## Commit Best Practices
 
-#### Commit Message Format
+### Commit Message Format
 Use conventional commit format for clear, searchable history:
 
 ```
@@ -520,39 +520,39 @@ Closes #123
 
 **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
-#### Commit Frequency
+### Commit Frequency
 - Make atomic commits that represent a single logical change
 - Commit frequently but ensure each commit is meaningful
 - Use `git add -p` for partial staging when needed
 
-### Code Review Requirements
+## Code Review Requirements
 
-#### Before Creating Pull Requests
+### Before Creating Pull Requests
 - [ ] All tests pass locally
 - [ ] Code follows project style guidelines
 - [ ] Documentation updated if needed
 - [ ] No debugging code or console.logs left in
 - [ ] Branch is up-to-date with main
 
-#### Pull Request Guidelines
+### Pull Request Guidelines
 - Write clear PR descriptions explaining what and why
 - Reference related issues using keywords (`Fixes #123`, `Closes #456`)
 - Keep PRs reasonably sized (< 500 lines when possible)
 - Respond to review feedback promptly and professionally
 
-### Merge Strategy
+## Merge Strategy
 
-#### Squash and Merge (Recommended)
+### Squash and Merge (Recommended)
 - Squash feature branch commits into a single, clean commit on main
 - Preserves a linear, readable history
 - Include all relevant context in the final commit message
 
-#### When NOT to Squash
+### When NOT to Squash
 - When preserving detailed commit history is important
 - For complex features where individual commits tell a story
 - When multiple developers contributed to the branch
 
-### Hotfix Process
+## Hotfix Process
 
 For critical production issues:
 
@@ -563,21 +563,21 @@ For critical production issues:
 5. Deploy and monitor closely
 6. Backport to development branches if needed
 
-### Release Management
+## Release Management
 
-#### Tagging Strategy
+### Tagging Strategy
 - Use semantic versioning (v1.2.3)
 - Tag stable releases on main branch
 - Include release notes with each tag
 
-#### Branch Cleanup
+### Branch Cleanup
 - Delete feature branches after successful merge
 - Keep main branch clean and up-to-date
 - Archive old releases using tags rather than branches
 
-### Emergency Procedures
+## Emergency Procedures
 
-#### Reverting Changes
+### Reverting Changes
 ```bash
 # Revert a specific commit
 git revert <commit-hash>
@@ -586,35 +586,35 @@ git revert <commit-hash>
 git revert -m 1 <merge-commit-hash>
 ```
 
-#### Force Push Guidelines
+### Force Push Guidelines
 - **Never force push to main or shared branches**
 - Only force push to your own feature branches
 - Use `--force-with-lease` instead of `--force` when needed
 - Communicate with team before force pushing to any shared branch
 
-### Automation and Tools
+## Automation and Tools
 
-#### Pre-commit Hooks
+### Pre-commit Hooks
 Set up hooks to enforce:
 - Code formatting (prettier, eslint)
 - Test execution
 - Commit message validation
 - Security scanning
 
-#### CI/CD Integration
+### CI/CD Integration
 - All branches should trigger automated testing
 - Main branch deployments should be automated
 - Failed builds should block merges
 
-### Collaboration Guidelines
+## Collaboration Guidelines
 
-#### Communication
+### Communication
 - Use descriptive commit messages that explain "why" not just "what"
 - Comment on code changes during review with constructive feedback
 - Tag relevant team members on complex changes
 - Use draft PRs for work-in-progress that needs early feedback
 
-#### Conflict Resolution
+### Conflict Resolution
 - Resolve merge conflicts locally before pushing
 - Prefer rebasing over merging for cleaner history
 - When in doubt, discuss with the team rather than guessing
