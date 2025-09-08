@@ -349,7 +349,8 @@ archon:manage_task(
 The project follows S-Tier SaaS design standards inspired by Stripe, Airbnb, and Linear. All UI development must adhere to:
 
 - **Design Principles**: `/context/design-principles.md` - Comprehensive checklist for world-class UI
-- **Component Library**: NextUI with custom Tailwind configuration
+- **Brand Standards**: `/context/design-brand-standards.md` - Comprehensive list of the project's design langugage including colors and fonts.
+- **Component Library**: NuxtUI with custom Tailwind configuration
 
 ## Quick Visual Check
 
