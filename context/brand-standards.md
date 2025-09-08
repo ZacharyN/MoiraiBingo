@@ -563,6 +563,3 @@ export const useBrandTheme = () => {
 - [Nuxt DevTools](https://devtools.nuxt.com/)
 - [Headless UI Icons](https://heroicons.com/)
 
----
-
-**Questions?** Contact the design team at [email] or check the component library in `/components/`
